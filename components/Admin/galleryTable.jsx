@@ -160,7 +160,7 @@ const GalleryTable = () => {
       )}
 
       <div
-        className={`w-full flex justify-center items-center font-bold md:text-[2rem] text-lg text-[#BB002D] py-4 ${montserrat.className}`}
+        className={`w-full flex justify-center items-center font-bold md:text-[2rem] text-lg py-4 ${montserrat.className}`}
       >
         Uploaded Galleries
       </div>
@@ -193,13 +193,13 @@ const GalleryTable = () => {
                       <div className="w-full flex items-center justify-center mt-1 gap-2 ">
                         <div
                           onClick={() => handleSeeGallery(gallery._id)}
-                          className=" text-sm duration-300 hover:bg-[#BB002D] hover:text-white border-2 border-[#BB002D] md:px-3 px-1 py-1 rounded-md cursor-pointer "
+                          className=" text-sm duration-300 hover:bg-black hover:text-white border-2 md:px-3 px-1 py-1 rounded-md cursor-pointer "
                         >
                           See
                         </div>
                         <div
                           onClick={() => handleDeleteGallery(gallery._id)}
-                          className=" text-sm duration-300 hover:bg-[#BB002D] hover:text-white border-2 border-[#BB002D] md:px-3 px-1 py-1 rounded-md cursor-pointer "
+                          className=" text-sm duration-300 hover:bg-black hover:text-white border-2 md:px-3 px-1 py-1 rounded-md cursor-pointer "
                         >
                           Delete
                         </div>
@@ -220,7 +220,7 @@ const GalleryTable = () => {
                           <div className="w-[100%] text-center">
                             <label
                               htmlFor="files"
-                              className="text-sm duration-300 hover:bg-[#BB002D] hover:text-white border-2 border-[#BB002D] md:px-3 px-1 py-1 rounded-md cursor-pointer"
+                              className="text-sm duration-300 hover:bg-black hover:text-white border-2 md:px-3 px-1 py-1 rounded-md cursor-pointer"
                             >
                               Add
                             </label>

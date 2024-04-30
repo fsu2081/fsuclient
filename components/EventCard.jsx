@@ -47,6 +47,20 @@ const EventCard = ({ event }) => {
               </button>
             </Link>
           )}
+          {event.facebook && (
+            <Link
+              href={event.facebook}
+              className="w-full flex justify-center "
+              target="__blank"
+            >
+              <button
+                id="event_name"
+                className="absolute bottom-0 text-white mx-auto flex justify-center font-semibold text-xl z-[20] bg-primary-300 hover:bg-primary-400 transition-colors duration-300 opacity-0 px-16 py-2 rounded-lg "
+              >
+                Facebook
+              </button>
+            </Link>
+          )}
         </div>
       </div>
       <div className=" w-full h-full flex flex-col gap-4 ">
