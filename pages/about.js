@@ -1,23 +1,23 @@
-import Image from 'next/image';
-import React from 'react';
-import { Poppins, Montserrat } from 'next/font/google';
-import Head from 'next/head';
-import { motion } from 'framer-motion';
+import Image from "next/image"
+import React from "react"
+import { Poppins, Montserrat } from "next/font/google"
+import Head from "next/head"
+import { motion } from "framer-motion"
 
 const poppins = Poppins({
-  weight: ['400', '200', '100', '300', '500', '600', '700', '800', '900'],
-  subsets: ['latin'],
-});
+  weight: ["400", "200", "100", "300", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+})
 const montserrat = Montserrat({
-  weight: ['400', '200', '100', '300', '500', '600', '700', '800', '900'],
-  subsets: ['latin'],
-});
+  weight: ["400", "200", "100", "300", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+})
 
 const About = () => {
   const variants = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0 },
-  };
+  }
 
   return (
     <>
@@ -28,8 +28,7 @@ const About = () => {
       </Head>
       <section
         className={` ${montserrat.className} flex flex-col w-full h-fit text-center justify-around items-center py-9`}
-        id="events"
-      >
+        id="events">
         <div className=" text-center ">
           <motion.h3
             variants={variants}
@@ -37,14 +36,12 @@ const About = () => {
             whileInView="visible"
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.4 }}
-            className={`font-bold text-[40px] ${montserrat.className} text-center text-[black]  mb-3 mx-auto`}
-          >
+            className={`font-bold text-[40px] ${montserrat.className} text-center text-[black]  mb-3 mx-auto`}>
             About FSU
           </motion.h3>
         </div>
         <div
-          className={`xl:w-[70%] lg:w-[80%] w-[90%] md:p-6 p-1 text-xl ${poppins.className} text-left rounded-lg h-max `}
-        >
+          className={`xl:w-[70%] lg:w-[80%] w-[90%] md:p-6 p-1 text-xl ${poppins.className} text-left rounded-lg h-max `}>
           <div className="flex xl:flex-row flex-col-reverse gap-4 min-h-[24rem] xl:gap-7">
             <div className="flex flex-col items-center xl:text-lg text-sm md:text-base text-justify xl:w-[70%] justify-between my-auto">
               <div>
@@ -54,8 +51,7 @@ const About = () => {
                   whileInView="visible"
                   viewport={{ once: true }}
                   transition={{ delay: 0.3, duration: 0.4 }}
-                  className="text-left text-[1.2rem] lg:text-[1.5rem]  font-bold w-[100%] mt-4 "
-                >
+                  className="text-left text-[1.2rem] lg:text-[1.5rem]  font-bold w-[100%] mt-4 ">
                   History
                 </motion.div>
                 <motion.p
@@ -64,8 +60,7 @@ const About = () => {
                   whileInView="visible"
                   viewport={{ once: true }}
                   transition={{ delay: 0.4, duration: 0.4 }}
-                  className="text-base md:text-md lg:text-lg  mb-4 mt-2 "
-                >
+                  className="text-base md:text-md lg:text-lg  mb-4 mt-2 ">
                   <span>
                     The history of FSU as an institution dates back to 1960. The
                     FSU is also known as the hub for potential leaders who can
@@ -87,8 +82,7 @@ const About = () => {
               whileInView="visible"
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="lg:w-[200%] max-w-[400px] max-h-[400px] mx-auto  w-full items-center my-auto"
-            >
+              className="lg:w-[200%] max-w-[400px] max-h-[400px] mx-auto  w-full items-center my-auto">
               <Image
                 src="/images/About Page/1.jpg"
                 alt="FSU Photo"
@@ -108,8 +102,7 @@ const About = () => {
               whileInView="visible"
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="xl:w-[100%] max-w-[400px] max-h-[400px] items-center justify-center mx-auto my-auto"
-            >
+              className="xl:w-[100%] max-w-[400px] max-h-[400px] items-center justify-center mx-auto my-auto">
               <Image
                 src="/images/About Page/6.jpg"
                 alt="FSU Photo"
@@ -128,8 +121,7 @@ const About = () => {
                   whileInView="visible"
                   viewport={{ once: true }}
                   transition={{ delay: 0.3, duration: 0.4 }}
-                  className="text-left text-[1.2rem] lg:text-[1.5rem]  font-bold w-[100%]   "
-                >
+                  className="text-left text-[1.2rem] lg:text-[1.5rem]  font-bold w-[100%]   ">
                   Committee Selection
                 </motion.div>
 
@@ -139,8 +131,7 @@ const About = () => {
                   whileInView="visible"
                   viewport={{ once: true }}
                   transition={{ delay: 0.4, duration: 0.4 }}
-                  className="text-base md:text-md lg:text-lg  mt-2"
-                >
+                  className="text-base md:text-md lg:text-lg  mt-2">
                   The election at each college elects a committee consisting of
                   the president, vice president, secretary, joint secretary,
                   treasurer and members. The number of members varies from
@@ -160,8 +151,7 @@ const About = () => {
                   whileInView="visible"
                   viewport={{ once: true }}
                   transition={{ delay: 0.3, duration: 0.4 }}
-                  className="text-left text-[1.2rem] lg:text-[1.5rem]  font-bold w-[100%]   "
-                >
+                  className="text-left text-[1.2rem] lg:text-[1.5rem]  font-bold w-[100%]   ">
                   Works
                 </motion.div>
 
@@ -171,8 +161,7 @@ const About = () => {
                   whileInView="visible"
                   viewport={{ once: true }}
                   transition={{ delay: 0.4, duration: 0.4 }}
-                  className="text-base md:text-md lg:text-lg  mt-2"
-                >
+                  className="text-base md:text-md lg:text-lg  mt-2">
                   The committee is established as the major student union in
                   Purwanchal campus after Free Students Union election held in
                   2079 B.S. It has been conducting various movements for rights
@@ -188,8 +177,7 @@ const About = () => {
               whileInView="visible"
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="xl:w-[100%] max-w-[400px] max-h-[400px] items-center justify-center mx-auto my-auto"
-            >
+              className="xl:w-[100%] max-w-[400px] max-h-[400px] items-center justify-center mx-auto my-auto">
               <Image
                 src="/images/About Page/2.jpg"
                 alt="FSU Photo"
@@ -280,8 +268,7 @@ const About = () => {
                 whileInView="visible"
                 viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 0.4 }}
-                className="text-left text-[1.15rem] lg:text-[1.5rem]  font-bold w-[100%]  mt-4 "
-              >
+                className="text-left text-[1.15rem] lg:text-[1.5rem]  font-bold w-[100%]  mt-4 ">
                 Committee Information
               </motion.div>
               <motion.table
@@ -290,62 +277,61 @@ const About = () => {
                 whileInView="visible"
                 viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 0.4 }}
-                className="mt-2 text-base md:text-md lg:text-lg"
-              >
+                className="mt-2 text-base md:text-md lg:text-lg">
                 <thead>
                   <tr className="border-2 border-black px-5">
-                    <th className="px-5 border-r-2 border-black">SN</th>
-                    <th className="pl-5 border-r-2 border-black">
+                    <th className="sm:px-5 px-3 border-r-2 border-black">SN</th>
+                    <th className="sm:pl-5 pl-3 border-r-2 border-black">
                       Organization
                     </th>
-                    <th className="px-5 border-r-2 border-black">
+                    <th className="sm:px-5 px-3 border-r-2 border-black">
                       Number of Members
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-2 border-black">
-                    <td className="px-5 border-r-2 border-black">1.</td>
-                    <td className="px-5 border-r-2 border-black">
+                    <td className="sm:px-5 px-3 border-r-2 border-black">1.</td>
+                    <td className="sm:px-5 px-3 border-r-2 border-black">
                       Nepal Student&apos;s Union
                     </td>
-                    <td className="px-5 border-r-2 border-black">10</td>
+                    <td className="sm:px-5 px-3 border-r-2 border-black">10</td>
                   </tr>
                   <tr className="border-2 border-black">
-                    <td className="px-5 border-r-2 border-black">2.</td>
-                    <td className="px-5 border-r-2 border-black">
+                    <td className="sm:px-5 px-3 border-r-2 border-black">2.</td>
+                    <td className="sm:px-5 px-3 border-r-2 border-black">
                       All Nepal National Free Students Union (UML)
                     </td>
-                    <td className="px-5 border-r-2 border-black">3</td>
+                    <td className="sm:px-5 px-3 border-r-2 border-black">3</td>
                   </tr>
                   <tr className="border-2 border-black">
-                    <td className="px-5 border-r-2 border-black">3.</td>
-                    <td className="px-5 border-r-2 border-black">
+                    <td className="sm:px-5 px-3 border-r-2 border-black">3.</td>
+                    <td className="sm:px-5 px-3 border-r-2 border-black">
                       Nepal National Independent Students&apos; Union
                       (Revolutionary)
                     </td>
-                    <td className="px-5 border-r-2 border-black">2</td>
+                    <td className="sm:px-5 px-3 border-r-2 border-black">2</td>
                   </tr>
                   <tr className="border-2 border-black">
-                    <td className="px-5 border-r-2 border-black">4.</td>
-                    <td className="px-5 border-r-2 border-black">
+                    <td className="sm:px-5 px-3 border-r-2 border-black">4.</td>
+                    <td className="sm:px-5 px-3 border-r-2 border-black">
                       Socialist Students Union
                     </td>
-                    <td className="px-5 border-r-2 border-black">2</td>
+                    <td className="sm:px-5 px-3 border-r-2 border-black">2</td>
                   </tr>
                   <tr className="border-2 border-black">
-                    <td className="px-5 border-r-2 border-black">5.</td>
-                    <td className="px-5 border-r-2 border-black">
+                    <td className="sm:px-5 px-3 border-r-2 border-black">5.</td>
+                    <td className="sm:px-5 px-3 border-r-2 border-black">
                       Free Students&apos; Group
                     </td>
-                    <td className="px-5 border-r-2 border-black">1</td>
+                    <td className="sm:px-5 px-3 border-r-2 border-black">1</td>
                   </tr>
                   <tr className="border-2 border-black">
-                    <td className="px-5 border-r-2 border-black">6.</td>
-                    <td className="px-5 border-r-2 border-black">
+                    <td className="sm:px-5 px-3 border-r-2 border-black">6.</td>
+                    <td className="sm:px-5 px-3 border-r-2 border-black">
                       Rashtriya Prajatantrik Students Union
                     </td>
-                    <td className="px-5 border-r-2 border-black">1</td>
+                    <td className="sm:px-5 px-3 border-r-2 border-black">1</td>
                   </tr>
                 </tbody>
               </motion.table>
@@ -524,7 +510,7 @@ const About = () => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default About;
+export default About
