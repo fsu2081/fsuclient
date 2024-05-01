@@ -36,7 +36,7 @@ const EventCard = ({ event }) => {
           {event.registration && (
             <Link
               href={event.registration}
-              className="w-full flex justify-center "
+              className="w-full flex justify-center"
               target="__blank"
             >
               <button

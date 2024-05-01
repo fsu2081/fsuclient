@@ -1,148 +1,3 @@
-// import Image from 'next/image';
-// import React, { useEffect, useState } from 'react';
-// import {
-//   AnimatePresence,
-//   motion,
-//   useAnimate,
-//   usePresence,
-// } from 'framer-motion';
-// import { projects } from '@/data/projects';
-// import ProjectCard from '@/components/ProjectCard';
-
-// const Projects = () => {
-//   const [selectedOption, setSelectedOption] = useState('all');
-//   const [filteredProject, setFilteredProject] = useState();
-
-//   const handleFilter = () => {
-//     let filter = projects.filter((item) => {
-//       if (selectedOption === 'all') {
-//         return item;
-//       } else if (selectedOption === item.category) {
-//         return true;
-//       } else {
-//         return false;
-//       }
-//     });
-//     setFilteredProject(filter);
-//   };
-
-//   const handleSelect = () => {
-//     let btn = document.querySelectorAll('#filter')[0];
-//     btn = btn.children;
-//     for (let i = 0; i < btn.length; i++) {
-//       btn[i].classList.add('hover:text-background-color');
-//       btn[i].classList.remove('bg-white');
-//       btn[i].classList.remove('text-background-color');
-//       btn[i].classList.add('hover:bg-white');
-//       if (selectedOption === btn[i].value) {
-//         btn[i].classList.add('bg-white');
-//         btn[i].classList.remove('hover:text-background-color');
-//         btn[i].classList.remove('hover:bg-white');
-//         btn[i].classList.add('text-background-color');
-//       }
-//     }
-//   };
-
-//   useEffect(() => {
-//     handleFilter();
-//     handleSelect();
-//   }, [selectedOption]);
-
-//   return (
-//     <div className=" w-[100%] flex flex-col items-center mb-10 ">
-//       <div className="flex w-[80%] justify-center mt-10  ">
-//         <div
-//           className="bg-background-color p-1 font-[Poppins] text-black rounded-lg bg-secondary-400 relative"
-//           id="filter"
-//         >
-//           <button
-//             onClick={(e) => {
-//               setSelectedOption(e.target.value);
-//             }}
-//             value="all"
-//             className="hover:bg-[white] hover:text-background-color px-5  py-2  rounded-lg mr-1 "
-//           >
-//             All
-//           </button>
-//           <button
-//             onClick={(e) => {
-//               setSelectedOption(e.target.value);
-//             }}
-//             value="Agriculture"
-//             className="p-2 hover:bg-[white] hover:text-background-color px-5  py-2  rounded-lg mr-1 "
-//           >
-//             Agriculture
-//           </button>
-//           <button
-//             onClick={(e) => {
-//               setSelectedOption(e.target.value);
-//             }}
-//             value="Architecture"
-//             className="p-2 hover:bg-[white] hover:text-background-color px-5  py-2  rounded-lg mr-1 "
-//           >
-//             Architecture
-//           </button>
-//           <button
-//             onClick={(e) => {
-//               setSelectedOption(e.target.value);
-//             }}
-//             value="Civil"
-//             className="p-2 hover:bg-[white] hover:text-background-color px-5  py-2  rounded-lg mr-1 "
-//           >
-//             Civil
-//           </button>
-//           <button
-//             onClick={(e) => {
-//               setSelectedOption(e.target.value);
-//             }}
-//             value="Computer"
-//             className="p-2 hover:bg-[white] hover:text-background-color px-5  py-2  rounded-lg mr-1 "
-//           >
-//             Computer
-//           </button>
-//           <button
-//             onClick={(e) => {
-//               setSelectedOption(e.target.value);
-//             }}
-//             value="Electrical"
-//             className="p-2 hover:bg-[white] hover:text-background-color px-5  py-2  rounded-lg mr-1 "
-//           >
-//             Electrical
-//           </button>
-//           <button
-//             onClick={(e) => {
-//               setSelectedOption(e.target.value);
-//             }}
-//             value="Electronics"
-//             className="p-2 hover:bg-[white] hover:text-background-color px-5  py-2  rounded-lg mr-1 "
-//           >
-//             Electronics
-//           </button>
-//           <button
-//             onClick={(e) => {
-//               setSelectedOption(e.target.value);
-//             }}
-//             value="Mechanical"
-//             className="p-2 hover:bg-[white] hover:text-background-color px-5  py-2  rounded-lg "
-//           >
-//             Mechanical
-//           </button>
-//         </div>
-//       </div>
-//       <AnimatePresence>
-//         <motion.div className="flex flex-wrap w-[80%]">
-//           {filteredProject &&
-//             filteredProject.map((item, i) => (
-//               <ProjectCard key={i} item={item} index={i} />
-//             ))}
-//         </motion.div>
-//       </AnimatePresence>
-//     </div>
-//   );
-// };
-
-// export default Projects;
-
 import ProjectCard from '@/components/ProjectCard';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -153,6 +8,8 @@ import {
   ArrowBackIosNewOutlined,
   ArrowForwardIosOutlined,
 } from '@mui/icons-material';
+import RecentNotice from '@/components/RecentNotice';
+import FollowUs from '@/components/FollowUs';
 const montserrat = Montserrat({
   weight: ['100', '300', '500', '600', '700', '800'],
   subsets: ['latin'],
@@ -257,14 +114,14 @@ const Projects = ({ initialData }) => {
     return pages;
   };
   return (
-    <div className="md:min-h-[49rem] w-full md:mt-10 flex justify-center ">
+    <div className="md:min-h-[49rem] w-full md:mt-10 flex  ">
       <div
-        className={`flex flex-col items-center bg-gray-200 h-full py-5 rounded w-full md:w-[70%] ${montserrat.className}`}
+        className={`flex flex-col items-center h-full rounded w-full md:w-[70%] ${montserrat.className}`}
       >
         <h1 className=" md:text-[40px] font-bold">List of Projects</h1>
         <div className="w-full flex justify-center min-h-[36rem] ">
           <table className="w-[90%] md:w-[60%] h-fit mt-10 border-2 border-gray-600">
-            <thead className="w-full border-2 border-gray-600">
+            <thead className="w-full border-2 border-gray-600 bg-primary-300 ">
               <tr className="w-full  border-2 border-gray-600">
                 <th className="w-[12%] py-2 border-2 border-gray-600">
                   <div className="w-full ">SN</div>
@@ -316,6 +173,10 @@ const Projects = ({ initialData }) => {
             </button>
           </div>
         )}
+      </div>
+      <div className="h-fit py-5 flex flex-col gap-8">
+        <RecentNotice />
+        <FollowUs />
       </div>
     </div>
   );

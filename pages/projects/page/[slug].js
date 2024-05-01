@@ -8,6 +8,8 @@ import {
   ArrowBackIosNewOutlined,
   ArrowForwardIosOutlined,
 } from '@mui/icons-material';
+import RecentNotice from '@/components/RecentNotice';
+import FollowUs from '@/components/FollowUs';
 const montserrat = Montserrat({
   weight: ['100', '300', '500', '600', '700', '800'],
   subsets: ['latin'],
@@ -118,14 +120,14 @@ const ProjectPage = ({ initialData }) => {
     return pages;
   };
   return (
-    <div className="md:min-h-[49rem] w-full md:mt-10 flex justify-center ">
+    <div className="md:min-h-[49rem] w-full md:mt-10 flex ">
       <div
-        className={`flex flex-col items-center bg-gray-200 h-full py-5 rounded w-full md:w-[70%] ${montserrat.className}`}
+        className={`flex flex-col items-center h-full rounded w-full md:w-[70%] ${montserrat.className}`}
       >
         <h1 className=" md:text-[40px] font-bold">List of Projects</h1>
         <div className="w-full flex justify-center min-h-[36rem] ">
           <table className="w-[90%] md:w-[60%] h-fit mt-10 border-2 border-gray-600">
-            <thead className="w-full border-2 border-gray-600">
+            <thead className="w-full border-2 border-gray-600 bg-primary-300">
               <tr className="w-full  border-2 border-gray-600">
                 <th className="w-[12%] py-2 border-2 border-gray-600">
                   <div className="w-full ">SN</div>
@@ -177,6 +179,10 @@ const ProjectPage = ({ initialData }) => {
             </button>
           </div>
         )}
+      </div>
+      <div className="h-fit py-5 flex flex-col gap-8">
+        <RecentNotice />
+        <FollowUs />
       </div>
     </div>
   );

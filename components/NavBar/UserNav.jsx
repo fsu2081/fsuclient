@@ -49,64 +49,64 @@ const UserNav = () => {
               <Link href="/">
                 <li
                   className="w-full flex flex-col overflow-hidden group text-background-50 "
-                  // className="h-[1.6rem] hover:border-b-2 border-secondary-600 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
                 >
                   Home
-                  <span className="border-[1.5px] border-secondary-600 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
                 </li>
               </Link>
               <Link href="/about">
                 <li
                   className="w-full flex flex-col overflow-hidden group text-background-50 "
-                  // className="h-[1.6rem] hover:border-b-2 border-secondary-600 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
                 >
                   About
-                  <span className="border-[1.5px] border-secondary-600 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
                 </li>
               </Link>
               <Link href="/notice">
                 <li
                   className="w-full flex flex-col overflow-hidden group text-background-50 "
-                  // className="h-[1.6rem] hover:border-b-2 border-secondary-600 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
                 >
                   Notice
-                  <span className="border-[1.5px] border-secondary-600 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
                 </li>
               </Link>
               <Link href="/events">
                 <li
                   className="w-full flex flex-col overflow-hidden group text-background-50 "
-                  // className="h-[1.6rem] hover:border-b-2 border-secondary-600 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
                 >
                   Events
-                  <span className="border-[1.5px] border-secondary-600 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
                 </li>
               </Link>
               <Link href="/projects">
                 <li
                   className="w-full flex flex-col overflow-hidden group text-background-50 "
-                  // className="h-[1.6rem] hover:border-b-2 border-secondary-600 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
                 >
                   Projects
-                  <span className="border-[1.5px] border-secondary-600 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
                 </li>
               </Link>
               <Link href="/committee">
                 <li
                   className="w-full flex flex-col overflow-hidden group text-background-50 "
-                  // className="h-[1.6rem] hover:border-b-2 border-secondary-600 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
                 >
                   Committee
-                  <span className="border-[1.5px] border-secondary-600 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
                 </li>
               </Link>
               <Link href="/gallery">
                 <li
                   className="w-full flex flex-col overflow-hidden group text-background-50"
-                  // className="h-[1.6rem] hover:border-b-2 border-secondary-600 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
                 >
                   Gallery
-                  <span className="border-[1.5px] border-secondary-600 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
                 </li>
               </Link>
             </ul>
@@ -130,64 +130,64 @@ const UserNav = () => {
               <Link href="/">
                 <li
                   className="w-full flex flex-col overflow-hidden group text-black mt-4 "
-                  // className="h-[1.6rem] hover:border-b-2 border-secondary-600 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
                 >
                   Home
-                  <span className="border-[1.5px] border-secondary-600 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
                 </li>
               </Link>
               <Link href="/about">
                 <li
                   className="w-full flex flex-col overflow-hidden group text-black "
-                  // className="h-[1.6rem] hover:border-b-2 border-secondary-600 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
                 >
                   About
-                  <span className="border-[1.5px] border-secondary-600 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
                 </li>
               </Link>
               <Link href="/notice">
                 <li
                   className="w-full flex flex-col overflow-hidden group text-black "
-                  // className="h-[1.6rem] hover:border-b-2 border-secondary-600 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
                 >
                   Notice
-                  <span className="border-[1.5px] border-secondary-600 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
                 </li>
               </Link>
               <Link href="/events">
                 <li
                   className="w-full flex flex-col overflow-hidden group text-black "
-                  // className="h-[1.6rem] hover:border-b-2 border-secondary-600 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
                 >
                   Events
-                  <span className="border-[1.5px] border-secondary-600 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
                 </li>
               </Link>
               <Link href="/projects">
                 <li
                   className="w-full flex flex-col overflow-hidden group text-black "
-                  // className="h-[1.6rem] hover:border-b-2 border-secondary-600 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
                 >
                   Projects
-                  <span className="border-[1.5px] border-secondary-600 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
                 </li>
               </Link>
               <Link href="/committee">
                 <li
                   className="w-full flex flex-col overflow-hidden group text-black "
-                  // className="h-[1.6rem] hover:border-b-2 border-secondary-600 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
                 >
                   Committee
-                  <span className="border-[1.5px] border-secondary-600 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
                 </li>
               </Link>
               <Link href="/gallery">
                 <li
                   className="w-full flex flex-col overflow-hidden group text-black mb-4"
-                  // className="h-[1.6rem] hover:border-b-2 border-secondary-600 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
                 >
                   Gallery
-                  <span className="border-[1.5px] border-secondary-600 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
                 </li>
               </Link>
             </ul>
