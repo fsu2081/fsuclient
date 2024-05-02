@@ -16,7 +16,6 @@ const NoticeBoard = () => {
     `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/admin/notice?page=all`,
     fetcher
   );
-  //   console.log(notices);
 
   const handleDelete = async (noticeId) => {
     try {
@@ -26,6 +25,7 @@ const NoticeBoard = () => {
           method: 'DELETE',
         }
       );
+      console.log(response);
 
       if (response.status === 200) {
         // Refresh notices after deletion (or use SWR's mutate function to update the cache)

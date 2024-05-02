@@ -1,4 +1,5 @@
 import NoticeBoard from '@/components/Admin/NoticeBoard';
+import ProjectTable from '@/components/Admin/projectTable';
 import Loading from '@/utils/loading';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -129,7 +130,7 @@ const Project = () => {
     return (
       <div className="w-full h-fit min-h-[calc(100vh-4rem)] flex flex-col bg-neutral-200 px-8 pb-10 ">
         <div className=" mt-6">
-          <h1 className="text-4xl text-center">Project</h1>
+          <h1 className="text-4xl ">Project</h1>
         </div>
         {/* Project Box */}
         <div className="w-full min-h-[45rem] border-2 flex mt-4 gap-8 justify-center ">
@@ -282,9 +283,11 @@ const Project = () => {
             </form>
           </div>
 
-          {/* <div className="flex-[2] h-full ">
-          <NoticeBoard />
-        </div> */}
+          <div className="flex-[2] h-full ">
+            <div className=" h-[40rem] border-2">
+              <ProjectTable />
+            </div>
+          </div>
         </div>
       </div>
     );

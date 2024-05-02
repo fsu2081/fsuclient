@@ -1,26 +1,40 @@
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import { Poppins, Montserrat } from "next/font/google";
-import Image from "next/image";
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import { Poppins, Montserrat } from 'next/font/google';
+import Image from 'next/image';
+import useSWR from 'swr';
 
 const poppins = Poppins({
-  weight: ["400", "200", "100", "300", "500", "600", "700", "800", "900"],
-  subsets: ["latin"],
+  weight: ['400', '200', '100', '300', '500', '600', '700', '800', '900'],
+  subsets: ['latin'],
 });
 const montserrat = Montserrat({
-  weight: ["400", "200", "100", "300", "500", "600", "700", "800", "900"],
-  subsets: ["latin"],
+  weight: ['400', '200', '100', '300', '500', '600', '700', '800', '900'],
+  subsets: ['latin'],
 });
 
 const GalleryTable = () => {
-  const [galleries, setGalleries] = useState();
+  // const [galleries, setGalleries] = useState();
   const router = useRouter();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState();
 
   const [editMode, setEditMode] = useState(false);
   const [selectedGallery, setSelectedGallery] = useState(null);
   const [selectedGalleryImages, setSelectedGalleryImages] = useState([]);
+
+  //Define a fetcher function
+  const fetcher = async (url) => {
+    const response = await fetch(url);
+    console.log(url);
+    const data = await response.json();
+    return data;
+  };
+
+  const { data: galleries = [], mutate } = useSWR(
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/gallery`,
+    fetcher
+  );
 
   const getGalleryImages = async (galleryId) => {
     try {
@@ -32,54 +46,46 @@ const GalleryTable = () => {
 
       setSelectedGalleryImages(data.images);
     } catch (error) {
-      console.error("Error fetching gallery images for editing:", error);
+      console.error('Error fetching gallery images for editing:', error);
     }
   };
 
-  const getGalleries = async () => {
-    try {
-      const data = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/gallery`
-      ).then((r) => {
-        return r.json();
-      });
-      setGalleries(data);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const getGalleries = async () => {
+  //   try {
+  //     const data = await fetch(
+  //       `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/gallery`
+  //     ).then((r) => {
+  //       return r.json();
+  //     });
+  //     setGalleries(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
-  useEffect(() => {
-    getGalleries();
-  }, []);
+  // useEffect(() => {
+  //   getGalleries();
+  // }, []);
 
   const handleDeleteGallery = async (id) => {
-    console.log("hello");
+    console.log('hello');
     console.log(id);
-    const result = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/gallery/deletegallery/${id}`
-    ).then((r) => {
-      return r.json();
-    });
-    // const result = await fetch(
-    //   `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/gallery/deletegallery`,
-    //   {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       id: id,
-    //     }),
-    //     credentials: "include",
-    //   }
-    // ).then((r) => {
-    //   return r.json();
-    // });
-    if (result.status === "success") {
-      router.reload();
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/gallery/${id}`,
+      {
+        method: 'DELETE',
+      }
+    );
+    console.log(response);
+
+    if (response.status === 200) {
+      // Refresh galleries after deletion (or use SWR's mutate function to update the cache)
+      // For simplicity, you can refetch all galleries
+      mutate(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/gallery`);
+    } else {
+      console.error('Failed to delete gallery');
     }
   };
 
@@ -91,9 +97,9 @@ const GalleryTable = () => {
   };
 
   const handleSubmit = async (id) => {
-    const files = document.getElementById("files");
+    const files = document.getElementById('files');
     if (!files.files[0]) {
-      setMessage("No image selected!!!");
+      setMessage('No image selected!!!');
       return;
     }
 
@@ -101,26 +107,26 @@ const GalleryTable = () => {
       const formData = new FormData();
 
       for (let i = 0; i < files.files.length; i++) {
-        formData.append("files", files.files[i]);
+        formData.append('files', files.files[i]);
       }
 
       // Update existing gallery
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/gallery/${id}`,
         {
-          method: "POST",
+          method: 'POST',
           body: formData,
         }
       ).then((r) => r.json());
       console.log(response);
-      if (response.status === "success") {
-        setMessage("Gallery updated successfully!");
+      if (response.status === 'success') {
+        setMessage('Gallery updated successfully!');
       } else {
-        setMessage("Failed to update gallery.");
+        setMessage('Failed to update gallery.');
       }
     } catch (error) {
-      console.error("Error uploading gallery:", error);
-      setMessage("An error occurred. Please try again.");
+      console.error('Error uploading gallery:', error);
+      setMessage('An error occurred. Please try again.');
     } finally {
       files.value = null;
       setSelectedGallery(null);
@@ -178,14 +184,14 @@ const GalleryTable = () => {
           </tr>
         </thead>
         <tbody>
-          {loading ? (
+          {!galleries ? (
             <tr>
               <td colSpan="7">Loading...</td>
             </tr>
           ) : (
             <>
-              {galleries && galleries.length > 0 ? (
-                galleries.map((gallery, id) => (
+              {Array.isArray(galleries) && galleries?.length > 0 ? (
+                galleries?.map((gallery, id) => (
                   <tr key={id} className="md:text-base text-sm ">
                     <td>{id + 1}</td>
                     <td>{gallery.event}</td>
