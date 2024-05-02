@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React from "react";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React from 'react';
 
 const AdminNav = () => {
   const router = useRouter();
@@ -12,14 +12,14 @@ const AdminNav = () => {
       const result = await fetch(
         `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/admin/logout`,
         {
-          method: "POST",
-          credentials: "include",
+          method: 'POST',
+          credentials: 'include',
         }
       ).then((r) => {
         return r.json();
       });
-      if (result.status === "success") {
-        router.push("/admin/login");
+      if (result.status === 'success') {
+        router.push('/admin/login');
       }
     } catch (error) {
       console.log(error);
@@ -27,7 +27,7 @@ const AdminNav = () => {
   };
 
   return (
-    <div className="w-[18rem] h-[100vh] flex flex-col items-center bg-white ">
+    <div className="w-[18rem] h-[100vh] md:flex flex-col items-center bg-white hidden ">
       <div className="w-[18rem] h-full flex flex-col justify-between items-center fixed ">
         <div className="w-full h-full">
           <div className="w-full h-[12rem] bg-blue-500 flex justify-center items-center ">
@@ -38,9 +38,9 @@ const AdminNav = () => {
             <ul className="w-full flex flex-col ">
               <Link
                 className={`p-4 duration-300 ${
-                  path === "/admin"
-                    ? "bg-blue-400 text-white"
-                    : "hover:bg-neutral-200"
+                  path === '/admin'
+                    ? 'bg-blue-400 text-white'
+                    : 'hover:bg-neutral-200'
                 } `}
                 href="/admin"
               >
@@ -48,9 +48,9 @@ const AdminNav = () => {
               </Link>
               <Link
                 className={`p-4   duration-300 ${
-                  path === "/admin/notice"
-                    ? "bg-blue-400 text-white"
-                    : "hover:bg-neutral-200"
+                  path === '/admin/notice'
+                    ? 'bg-blue-400 text-white'
+                    : 'hover:bg-neutral-200'
                 } `}
                 href="/admin/notice"
               >
@@ -58,9 +58,9 @@ const AdminNav = () => {
               </Link>
               <Link
                 className={`p-4   duration-300 ${
-                  path === "/admin/event"
-                    ? "bg-blue-400 text-white"
-                    : "hover:bg-neutral-200"
+                  path === '/admin/event'
+                    ? 'bg-blue-400 text-white'
+                    : 'hover:bg-neutral-200'
                 } `}
                 href="/admin/event"
               >
@@ -68,9 +68,9 @@ const AdminNav = () => {
               </Link>
               <Link
                 className={`p-4   duration-300 ${
-                  path === "/admin/project"
-                    ? "bg-blue-400 text-white"
-                    : "hover:bg-neutral-200"
+                  path === '/admin/project'
+                    ? 'bg-blue-400 text-white'
+                    : 'hover:bg-neutral-200'
                 } `}
                 href="/admin/project"
               >
@@ -78,9 +78,9 @@ const AdminNav = () => {
               </Link>
               <Link
                 className={`p-4   duration-300 ${
-                  path === "/admin/gallery"
-                    ? "bg-blue-400 text-white"
-                    : "hover:bg-neutral-200"
+                  path === '/admin/gallery'
+                    ? 'bg-blue-400 text-white'
+                    : 'hover:bg-neutral-200'
                 } `}
                 href="/admin/gallery"
               >

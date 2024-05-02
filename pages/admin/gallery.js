@@ -52,9 +52,9 @@ const Gallery = () => {
 
   return (
     <div
-      className={`${poppins.className} rounded-lg h-max flex flex-col items-center  bg-[#F3F4F6] `}
+      className={`${poppins.className} h-fit min-h-[calc(100vh-4rem)] flex flex-col items-center  bg-neutral-200  `}
     >
-      <div className="w-[70%] h-max flex flex-col justify-center items-center border-2 border-gray-300 py-10 mt-10 rounded-lg bg-white ">
+      <div className="w-[90%] h-full flex flex-col justify-center items-center border-2 border-gray-300 py-10 mt-10 rounded-lg bg-white ">
         <div className="w-full h-[4rem] flex justify-center ">
           <div
             className={`sm:text-[3rem] text-3xl font-bold ${montserrat.className}`}
@@ -130,7 +130,7 @@ const Gallery = () => {
           </div>{' '}
         </form>{' '}
       </div>{' '}
-      <div className="w-[100%] mt-10 mx-auto flex justify-center mb-10 ">
+      <div className="w-[90%] mt-10 flex justify-center  ">
         <GalleryTable />
       </div>{' '}
     </div>

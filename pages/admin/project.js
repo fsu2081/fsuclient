@@ -128,13 +128,13 @@ const Project = () => {
     );
   } else
     return (
-      <div className="w-full h-fit min-h-[calc(100vh-4rem)] flex flex-col bg-neutral-200 px-8 pb-10 ">
+      <div className="w-full h-fit md:min-h-[calc(100vh-4rem)] flex flex-col bg-neutral-200 px-8 ">
         <div className=" mt-6">
           <h1 className="text-4xl ">Project</h1>
         </div>
         {/* Project Box */}
-        <div className="w-full min-h-[45rem] border-2 flex mt-4 gap-8 justify-center ">
-          <div className=" min-w-[60%] h-fit bg-white rounded-lg p-2 px-8 py-8 ">
+        <div className="w-full h-full  flex flex-col lg:flex-row mt-4 gap-8">
+          <div className="lg:flex-1 h-fit bg-white rounded-lg p-2 px-8 py-8 ">
             <div className="text-2xl font-semibold ">
               <span>Post a Project</span>
             </div>
@@ -283,7 +283,7 @@ const Project = () => {
             </form>
           </div>
 
-          <div className="flex-[2] h-full ">
+          <div className="lg:flex-[2] lg:mb-0 mb-8 max-h-[45rem] ">
             <div className=" h-[40rem] border-2">
               <ProjectTable />
             </div>

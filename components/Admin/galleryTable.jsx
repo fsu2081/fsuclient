@@ -136,7 +136,7 @@ const GalleryTable = () => {
 
   return (
     <div
-      className={`max-h-[30rem] md:w-[60%] w-[95%] border-2 overflow-auto border-gray-300 mb-4 rounded-lg ${poppins.className} bg-white `}
+      className={`max-h-[30rem] w-full border-2 overflow-auto border-gray-300 mb-4 rounded-lg ${poppins.className} bg-white `}
     >
       {editMode && (
         <div

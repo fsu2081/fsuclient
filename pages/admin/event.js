@@ -127,7 +127,7 @@ const AdminEvent = () => {
   };
 
   return (
-    <div className="w-full h-fit min-h-[calc(100vh-4rem)] flex flex-col bg-neutral-200 px-8 ">
+    <div className="w-full h-fit min-h-[calc(100vh-4rem)] flex flex-col bg-neutral-200 px-8 pb-4 lg:pb-0 ">
       <div className=" mt-6">
         <h1 className="text-4xl">Event</h1>
       </div>
