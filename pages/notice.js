@@ -181,6 +181,7 @@
 //   return { props: { initialData } };
 // }
 
+import FollowUs from '@/components/FollowUs';
 import NoticeCard from '@/components/NoticeCard';
 import RecentNotice from '@/components/RecentNotice';
 import {
@@ -207,7 +208,7 @@ const Notice = ({ initialData }) => {
     fetcher,
     { initialData }
   );
-  
+
   useEffect(() => {
     if (notices) {
       setTotalPages(notices.totalPages);
@@ -326,15 +327,16 @@ const Notice = ({ initialData }) => {
               <button
                 onClick={() => handlePageClick(currentPage + 1)}
                 disabled={currentPage === totalPages}
-                className="w-full h-full disabled:text-neutral-300 text-black "
+                className="w-full h-full disabled:text-neutral-300 text-black"
               >
                 <ArrowForwardIosOutlined />
               </button>
             </div>
           )}
         </div>
-        <div className="w-[25%] hidden md:flex ">
+        <div className="w-[25%] hidden md:flex flex-col gap-8 ">
           <RecentNotice />
+          <FollowUs />
         </div>
       </div>
     </div>

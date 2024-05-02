@@ -4,8 +4,10 @@ import React from 'react';
 
 const FollowUs = () => {
   return (
-    <div className="w-full flex flex-col items-center gap-4 rounded-lg shadow-lg shadow-[#07040334] bg-white py-4">
-      <h1 className="text-2xl">Follow us to get the latest updates:</h1>
+    <div className="px-4 w-full flex flex-col items-center gap-4 rounded-lg shadow-lg shadow-[#07040334] bg-white py-4">
+      <h1 className="lg:text-2xl text-lg">
+        Follow us to get the latest updates:
+      </h1>
       <div className="flex gap-4">
         <Link
           href="https://www.facebook.com/fsu.ioeerc"

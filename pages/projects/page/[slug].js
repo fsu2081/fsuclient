@@ -180,7 +180,7 @@ const ProjectPage = ({ initialData }) => {
           </div>
         )}
       </div>
-      <div className="h-fit py-5 flex flex-col gap-8">
+      <div className="h-fit w-[25%] py-5 hidden md:flex flex-col gap-8 ">
         <RecentNotice />
         <FollowUs />
       </div>

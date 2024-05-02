@@ -114,7 +114,7 @@ const Projects = ({ initialData }) => {
     return pages;
   };
   return (
-    <div className="md:min-h-[49rem] w-full md:mt-10 flex  ">
+    <div className="md:min-h-[49rem] w-full mt-10 mb-10 md:mb-0 flex  ">
       <div
         className={`flex flex-col items-center h-full rounded w-full md:w-[70%] ${montserrat.className}`}
       >
@@ -174,7 +174,7 @@ const Projects = ({ initialData }) => {
           </div>
         )}
       </div>
-      <div className="h-fit py-5 flex flex-col gap-8">
+      <div className="h-fit w-[25%] py-5 hidden md:flex flex-col gap-8">
         <RecentNotice />
         <FollowUs />
       </div>
