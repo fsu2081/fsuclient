@@ -3,7 +3,7 @@ import { Montserrat } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const montserrat = Montserrat({
   weight: ['100', '300', '500', '600', '700', '800'],
@@ -12,6 +12,8 @@ const montserrat = Montserrat({
 
 const UserNav = () => {
   const [menu, setMenu] = useState(false);
+  const [menuHeight, setMenuHeight] = useState(0);
+  const menuRef = useRef(null);
   const router = useRouter();
   useEffect(() => {
     const handleRouteChange = (url) => {
@@ -24,6 +26,12 @@ const UserNav = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (menuRef.current) {
+      setMenuHeight(menuRef.current.scrollHeight);
+    }
+  }, [menu]);
+
   return (
     <div
       className={`h-fit w-full flex flex-col items-center justify-center ${montserrat.className}`}
@@ -31,7 +39,7 @@ const UserNav = () => {
       <div className="w-[90%] py-2 flex items-center  ">
         <div className="flex items-center h-full ">
           <Image
-            alt="Free Student Union"
+            alt="Logo"
             width={20}
             height={20}
             src="/logo.png"
@@ -113,7 +121,7 @@ const UserNav = () => {
           </nav>
 
           <div
-            className="flex md:hidden justify-center items-center "
+            className="flex md:hidden justify-center items-center cursor-pointer "
             onClick={() => {
               setMenu(!menu);
             }}
@@ -122,78 +130,80 @@ const UserNav = () => {
           </div>
         </div>
       </div>
-      {menu && (
-        <div className="w-full flex md:hidden">
-          <nav className="w-full justify-center ">
-            {/* NavLinks */}
-            <ul className="flex flex-col gap-8 items-center ">
-              <Link href="/">
-                <li
-                  className="w-full flex flex-col overflow-hidden group text-black mt-4 "
-                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
-                >
-                  Home
-                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
-                </li>
-              </Link>
-              <Link href="/about">
-                <li
-                  className="w-full flex flex-col overflow-hidden group text-black "
-                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
-                >
-                  About
-                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
-                </li>
-              </Link>
-              <Link href="/notice">
-                <li
-                  className="w-full flex flex-col overflow-hidden group text-black "
-                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
-                >
-                  Notice
-                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
-                </li>
-              </Link>
-              <Link href="/events">
-                <li
-                  className="w-full flex flex-col overflow-hidden group text-black "
-                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
-                >
-                  Events
-                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
-                </li>
-              </Link>
-              <Link href="/projects">
-                <li
-                  className="w-full flex flex-col overflow-hidden group text-black "
-                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
-                >
-                  Projects
-                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
-                </li>
-              </Link>
-              <Link href="/committee">
-                <li
-                  className="w-full flex flex-col overflow-hidden group text-black "
-                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
-                >
-                  Committee
-                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
-                </li>
-              </Link>
-              <Link href="/gallery">
-                <li
-                  className="w-full flex flex-col overflow-hidden group text-black mb-4"
-                  // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
-                >
-                  Gallery
-                  <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
-                </li>
-              </Link>
-            </ul>
-          </nav>
-        </div>
-      )}
+
+      <div
+        ref={menuRef}
+        className={`w-full flex md:hidden transition-height duration-500 ease-in-out overflow-hidden`}
+        style={{ height: menu ? `${menuHeight}px` : '0' }}
+      >
+        <nav className="w-full justify-center ">
+          <ul className="flex flex-col gap-8 items-center ">
+            <Link href="/">
+              <li
+                className="w-full flex flex-col overflow-hidden group text-black mt-4 "
+                // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+              >
+                Home
+                <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+              </li>
+            </Link>
+            <Link href="/about">
+              <li
+                className="w-full flex flex-col overflow-hidden group text-black "
+                // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+              >
+                About
+                <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+              </li>
+            </Link>
+            <Link href="/notice">
+              <li
+                className="w-full flex flex-col overflow-hidden group text-black "
+                // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+              >
+                Notice
+                <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+              </li>
+            </Link>
+            <Link href="/events">
+              <li
+                className="w-full flex flex-col overflow-hidden group text-black "
+                // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+              >
+                Events
+                <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+              </li>
+            </Link>
+            <Link href="/projects">
+              <li
+                className="w-full flex flex-col overflow-hidden group text-black "
+                // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+              >
+                Projects
+                <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+              </li>
+            </Link>
+            <Link href="/committee">
+              <li
+                className="w-full flex flex-col overflow-hidden group text-black "
+                // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+              >
+                Committee
+                <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+              </li>
+            </Link>
+            <Link href="/gallery">
+              <li
+                className="w-full flex flex-col overflow-hidden group text-black mb-4"
+                // className="h-[1.6rem] hover:border-b-2 border-gray-200 text-background-50 before:content-[''] before:absolute before:h-[1rem] before:border-b-2 before:border-b-secondary-600 "
+              >
+                Gallery
+                <span className="border-[1.5px] border-gray-200 -translate-x-full group-hover:translate-x-0 duration-300 "></span>
+              </li>
+            </Link>
+          </ul>
+        </nav>
+      </div>
     </div>
   );
 };
