@@ -1,13 +1,13 @@
-import { Menu } from '@mui/icons-material';
-import { Montserrat } from 'next/font/google';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import React, { useEffect, useRef, useState } from 'react';
+import { Menu } from "@mui/icons-material";
+import { Montserrat } from "next/font/google";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { useEffect, useRef, useState } from "react";
 
 const montserrat = Montserrat({
-  weight: ['100', '300', '500', '600', '700', '800'],
-  subsets: ['latin'],
+  weight: ["100", "300", "500", "600", "700", "800"],
+  subsets: ["latin"],
 });
 
 const UserNav = () => {
@@ -20,9 +20,9 @@ const UserNav = () => {
       setMenu(false);
     };
 
-    router.events.on('routeChangeComplete', handleRouteChange);
+    router.events.on("routeChangeComplete", handleRouteChange);
     return () => {
-      router.events.off('routeChangeStart', handleRouteChange);
+      router.events.off("routeChangeStart", handleRouteChange);
     };
   }, []);
 
@@ -134,7 +134,7 @@ const UserNav = () => {
       <div
         ref={menuRef}
         className={`w-full flex md:hidden transition-height duration-500 ease-in-out overflow-hidden`}
-        style={{ height: menu ? `${menuHeight}px` : '0' }}
+        style={{ height: menu ? `${menuHeight}px` : "0" }}
       >
         <nav className="w-full justify-center ">
           <ul className="flex flex-col gap-8 items-center ">
