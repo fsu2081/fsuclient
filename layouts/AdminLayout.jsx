@@ -1,9 +1,9 @@
-import AdminNav from '@/components/NavBar/AdminNav';
-import AdminTopNav from '@/components/NavBar/AdminTopNav';
-import { useRouter } from 'next/router';
-import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import AdminNav from "@/components/NavBar/AdminNav";
+import AdminTopNav from "@/components/NavBar/AdminTopNav";
+import { useRouter } from "next/router";
+import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const AdminLayout = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -11,6 +11,7 @@ const AdminLayout = ({ Component, pageProps }) => {
   console.log(path);
   const [loading, setLoading] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   //This functions checks if the admin is authenticated or not
   const checkAdmin = async () => {
@@ -19,13 +20,13 @@ const AdminLayout = ({ Component, pageProps }) => {
       const data = await fetch(
         `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/admin/isAdmin`,
         {
-          credentials: 'include',
+          credentials: "include",
         }
       ).then((r) => {
         return r.json();
       });
-      if (data.status === 'error') {
-        router.push('/admin/login');
+      if (data.status === "error") {
+        router.push("/admin/login");
       } else {
         setIsAdmin(true);
       }
@@ -37,23 +38,30 @@ const AdminLayout = ({ Component, pageProps }) => {
   };
 
   useEffect(() => {
-    if (!path.includes('/admin/login')) checkAdmin();
+    setIsSidebarOpen(false);
+    if (!path.includes("/admin/login")) checkAdmin();
   }, [path]);
 
   //set the layout of the admin login page
-  if (path.includes('/admin/login')) return <Component {...pageProps} />;
+  if (path.includes("/admin/login")) return <Component {...pageProps} />;
 
   // Wait until loading is complete and isAdmin is updated
   if (loading || !isAdmin) {
     return <div className="w-full h-full"></div>;
   } else
     return (
-      <div className="w-full h-fit flex  ">
+      <div className="w-full h-fit flex bg-neutral-200 ">
         <div>
-          <AdminNav />
+          <AdminNav
+            isSidebarOpen={isSidebarOpen}
+            setIsSidebarOpen={setIsSidebarOpen}
+          />
         </div>
-        <div className="w-full h-fit flex flex-col">
-          <AdminTopNav />
+        <div className="w-full h-fit flex flex-col bg-neutral-200 px-2 ">
+          <AdminTopNav
+            isSidebarOpen={isSidebarOpen}
+            setIsSidebarOpen={setIsSidebarOpen}
+          />
           <Component {...pageProps} />
         </div>
       </div>
