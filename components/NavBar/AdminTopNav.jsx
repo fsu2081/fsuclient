@@ -33,7 +33,7 @@ const AdminTopNav = ({ isSidebarOpen, setIsSidebarOpen }) => {
   };
   return (
     <div
-      className={`h-[4rem] w-full flex items-center justify-between lg:justify-end px-4 relative ${montserrat.className} rounded-b-3xl bg-white shadow-lg `}
+      className={`sticky top-0 h-[4rem] w-full flex items-center justify-between lg:justify-end px-4 relative ${montserrat.className} rounded-b-3xl bg-white shadow-lg `}
     >
       <div className={`flex lg:hidden cursor-pointer `}>
         <Menu

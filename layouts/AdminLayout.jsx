@@ -8,11 +8,9 @@ import { useState } from "react";
 const AdminLayout = ({ Component, pageProps }) => {
   const router = useRouter();
   const path = router.pathname;
-  console.log(path);
   const [loading, setLoading] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
   //This functions checks if the admin is authenticated or not
   const checkAdmin = async () => {
     setLoading(true);
@@ -57,12 +55,14 @@ const AdminLayout = ({ Component, pageProps }) => {
             setIsSidebarOpen={setIsSidebarOpen}
           />
         </div>
-        <div className="w-full h-fit flex flex-col bg-neutral-200 px-2 ">
+        <div className="w-full min-h-screen flex flex-col items-center bg-neutral-200 px-2 gap-5 ">
           <AdminTopNav
             isSidebarOpen={isSidebarOpen}
             setIsSidebarOpen={setIsSidebarOpen}
           />
-          <Component {...pageProps} />
+          <div className="w-[90%]">
+            <Component {...pageProps} />
+          </div>
         </div>
       </div>
     );

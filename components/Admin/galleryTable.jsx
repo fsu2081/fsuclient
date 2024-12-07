@@ -1,20 +1,23 @@
-import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
-import { Poppins, Montserrat } from 'next/font/google';
-import Image from 'next/image';
-import useSWR from 'swr';
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { Poppins, Montserrat } from "next/font/google";
+import Image from "next/image";
+import useSWR from "swr";
+import { Close, Edit, RemoveRedEye } from "@mui/icons-material";
+import SeeGallery from "./Gallery/SeeGallery";
 
 const poppins = Poppins({
-  weight: ['400', '200', '100', '300', '500', '600', '700', '800', '900'],
-  subsets: ['latin'],
+  weight: ["400", "200", "100", "300", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
 });
 const montserrat = Montserrat({
-  weight: ['400', '200', '100', '300', '500', '600', '700', '800', '900'],
-  subsets: ['latin'],
+  weight: ["400", "200", "100", "300", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
 });
 
-const GalleryTable = () => {
+const GalleryTable = ({ flag, setFlag }) => {
   // const [galleries, setGalleries] = useState();
+  const [modals, setModals] = useState("");
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState();
@@ -32,107 +35,100 @@ const GalleryTable = () => {
   };
 
   const { data: galleries = [], mutate } = useSWR(
-    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/gallery`,
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/admin/gallery`,
     fetcher
   );
+  useEffect(() => {
+    mutate();
+  }, [flag]);
 
   const getGalleryImages = async (galleryId) => {
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/gallery/${galleryId}`
+        `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/admin/gallery/${galleryId}`
       );
       const data = await response.json();
       console.log(data);
 
       setSelectedGalleryImages(data.images);
     } catch (error) {
-      console.error('Error fetching gallery images for editing:', error);
+      console.error("Error fetching gallery images for editing:", error);
     }
   };
 
-  // const getGalleries = async () => {
-  //   try {
-  //     const data = await fetch(
-  //       `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/gallery`
-  //     ).then((r) => {
-  //       return r.json();
-  //     });
-  //     setGalleries(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+  const deleteGalleryConfirmation = (id) => {
+    const userConfirmed = window.confirm(
+      "Are you sure you want to delete this gallery?"
+    );
 
-  // useEffect(() => {
-  //   getGalleries();
-  // }, []);
+    if (userConfirmed) {
+      handleDeleteGallery(id);
+    }
+  };
 
   const handleDeleteGallery = async (id) => {
-    console.log('hello');
+    console.log("hello");
     console.log(id);
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/gallery/${id}`,
+      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/admin/gallery/${id}`,
       {
-        method: 'DELETE',
+        method: "DELETE",
       }
     );
-    console.log(response);
 
     if (response.status === 200) {
       // Refresh galleries after deletion (or use SWR's mutate function to update the cache)
       // For simplicity, you can refetch all galleries
       mutate(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/gallery`);
     } else {
-      console.error('Failed to delete gallery');
+      console.error("Failed to delete gallery");
     }
   };
 
-  const handleSeeGallery = (galleryId) => {
-    getGalleryImages(galleryId);
-    setSelectedGallery(galleryId);
-    getGalleryImages(galleryId);
-    setEditMode(true);
-  };
+  // const handleSeeGallery = (galleryId) => {
+  //   getGalleryImages(galleryId);
+  //   setSelectedGallery(galleryId);
+  //   getGalleryImages(galleryId);
+  //   setEditMode(true);
+  // };
 
-  const handleSubmit = async (id) => {
-    const files = document.getElementById('files');
-    if (!files.files[0]) {
-      setMessage('No image selected!!!');
-      return;
-    }
+  // const handleSubmit = async (id) => {
+  //   const files = document.getElementById("files");
+  //   if (!files.files[0]) {
+  //     setMessage("No image selected!!!");
+  //     return;
+  //   }
 
-    try {
-      const formData = new FormData();
+  //   try {
+  //     const formData = new FormData();
 
-      for (let i = 0; i < files.files.length; i++) {
-        formData.append('files', files.files[i]);
-      }
+  //     for (let i = 0; i < files.files.length; i++) {
+  //       formData.append("files", files.files[i]);
+  //     }
 
-      // Update existing gallery
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/gallery/${id}`,
-        {
-          method: 'POST',
-          body: formData,
-        }
-      ).then((r) => r.json());
-      console.log(response);
-      if (response.status === 'success') {
-        setMessage('Gallery updated successfully!');
-      } else {
-        setMessage('Failed to update gallery.');
-      }
-    } catch (error) {
-      console.error('Error uploading gallery:', error);
-      setMessage('An error occurred. Please try again.');
-    } finally {
-      files.value = null;
-      setSelectedGallery(null);
-      setSelectedGalleryImages([]);
-    }
-  };
+  //     // Update existing gallery
+  //     const response = await fetch(
+  //       `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/admin/gallery/${id}`,
+  //       {
+  //         method: "POST",
+  //         body: formData,
+  //       }
+  //     ).then((r) => r.json());
+  //     console.log(response);
+  //     if (response.status === "success") {
+  //       setMessage("Gallery updated successfully!");
+  //     } else {
+  //       setMessage("Failed to update gallery.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error uploading gallery:", error);
+  //     setMessage("An error occurred. Please try again.");
+  //   } finally {
+  //     files.value = null;
+  //     setSelectedGallery(null);
+  //     setSelectedGalleryImages([]);
+  //   }
+  // };
 
   return (
     <div
@@ -168,7 +164,7 @@ const GalleryTable = () => {
       <div
         className={`w-full flex justify-center items-center font-bold md:text-[2rem] text-lg py-4 ${montserrat.className}`}
       >
-        Uploaded Galleries
+        Galleries
       </div>
       {message && (
         <div className="w-full flex justify-center ">
@@ -179,7 +175,7 @@ const GalleryTable = () => {
         <thead>
           <tr className="font-bold border-t-2 border-b-2 md:text-lg text-sm">
             <td>Sn</td>
-            <td>Name</td>
+            <td>Title</td>
             <td>Action</td>
           </tr>
         </thead>
@@ -190,12 +186,12 @@ const GalleryTable = () => {
             </tr>
           ) : (
             <>
-              {Array.isArray(galleries) && galleries?.length > 0 ? (
-                galleries?.map((gallery, id) => (
+              {Array.isArray(galleries.data) && galleries?.data?.length > 0 ? (
+                galleries?.data?.map((gallery, id) => (
                   <tr key={id} className="md:text-base text-sm ">
                     <td>{id + 1}</td>
-                    <td>{gallery.event}</td>
-                    <td>
+                    <td>{gallery?.title}</td>
+                    {/* <td>
                       <div className="w-full flex items-center justify-center mt-1 gap-2 ">
                         <div
                           onClick={() => handleSeeGallery(gallery._id)}
@@ -209,12 +205,6 @@ const GalleryTable = () => {
                         >
                           Delete
                         </div>
-                        {/* <div
-                          onClick={handleSubmit}
-                          className=" text-sm duration-300 bg-sky-500 hover:text-white md:px-3 px-1 py-1 rounded-md cursor-pointer "
-                        >
-                          Submit
-                        </div> */}
                         <form
                           encType="multipart/form-data"
                           onSubmit={(e) => {
@@ -248,6 +238,28 @@ const GalleryTable = () => {
                           </button>
                         </form>
                       </div>
+                    </td> */}
+                    <td>
+                      <div className="flex gap-2 justify-center ">
+                        <div
+                          onClick={() => {
+                            setModals("see");
+                            setSelectedGallery(gallery);
+                          }}
+                          className=" text-sm duration-300 hover:bg-blue-400 hover:text-white md:px-3 px-1 py-1 rounded-md cursor-pointer "
+                        >
+                          See
+                        </div>
+                        <div className=" text-sm duration-300 hover:bg-blue-400 hover:text-white md:px-3 px-1 py-1 rounded-md cursor-pointer ">
+                          Update
+                        </div>
+                        <div
+                          onClick={() => deleteGalleryConfirmation(gallery._id)}
+                          className=" text-sm duration-300 hover:bg-red-400 hover:text-white md:px-3 px-1 py-1 rounded-md cursor-pointer "
+                        >
+                          Delete
+                        </div>
+                      </div>
                     </td>
                   </tr>
                 ))
@@ -260,6 +272,25 @@ const GalleryTable = () => {
           )}
         </tbody>
       </table>
+      {modals && (
+        <div className=" z-[200] absolute top-0 left-0 w-screen h-screen bg-black/40 flex flex-col justify-center items-center ">
+          <div className="relative w-fit h-fit bg-white p-5 rounded-lg ">
+            <button
+              className="absolute top-5 right-5 text-black w-full flex justify-end  "
+              onClick={() => {
+                setModals("");
+              }}
+            >
+              <Close />
+            </button>
+            <SeeGallery
+              gallery={selectedGallery}
+              flag={flag}
+              setFlag={setFlag}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
