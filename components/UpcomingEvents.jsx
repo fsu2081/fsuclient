@@ -1,27 +1,26 @@
-import React from 'react';
-import EventCard from './EventCard';
-import { upcomingEvents } from '@/data/events';
-import { Montserrat, Roboto, Inter } from 'next/font/google';
+import React from "react"
+import EventCard from "./EventCard"
+import { upcomingEvents } from "@/data/events"
+import { Montserrat, Roboto, Inter } from "next/font/google"
 const montserrat = Montserrat({
-  weight: ['100', '300', '500', '600', '700', '800'],
-  subsets: ['latin'],
-});
+  weight: ["100", "300", "500", "600", "700", "800"],
+  subsets: ["latin"],
+})
 const roboto = Roboto({
-  weight: ['100', '300', '500', '700'],
-  subsets: ['latin'],
-});
+  weight: ["100", "300", "500", "700"],
+  subsets: ["latin"],
+})
 const inter = Inter({
-  weight: ['100', '300', '500', '700'],
-  subsets: ['latin'],
-});
+  weight: ["100", "300", "500", "700"],
+  subsets: ["latin"],
+})
 
 const UpcomingEvents = ({ events }) => {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-row justify-between">
         <h1
-          className={`${montserrat.className} text-3xl md:text-5xl text-secondary-800 font-bold`}
-        >
+          className={`${montserrat.className} text-3xl md:text-5xl text-secondary-800 font-bold`}>
           Upcoming Events
         </h1>
         {/* <p
@@ -41,7 +40,7 @@ const UpcomingEvents = ({ events }) => {
         </button>
       </div> */}
     </div>
-  );
-};
+  )
+}
 
-export default UpcomingEvents;
+export default UpcomingEvents

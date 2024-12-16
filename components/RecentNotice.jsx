@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react"
 // import { notice } from '@/api/notice';
-import Image from 'next/image';
-import Link from 'next/link';
-import Skeleton from 'react-loading-skeleton';
-import useSWR from 'swr';
+import Image from "next/image"
+import Link from "next/link"
+import Skeleton from "react-loading-skeleton"
+import useSWR from "swr"
 
-const fetcher = (url) => fetch(url).then((r) => r.json());
+const fetcher = (url) => fetch(url).then((r) => r.json())
 
 const RecentNotice = () => {
   // const [notices, setNotices] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const newsCount = 5;
+  const [loading, setLoading] = useState(false)
+  const newsCount = 5
   const { data: notices, error } = useSWR(
     `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/admin/notice/recent`,
     fetcher
-  );
+  )
 
   // useEffect(() => {
   //   getRecentNotices();
@@ -28,7 +28,7 @@ const RecentNotice = () => {
   //   }
   // };
 
-  console.log(notices);
+  console.log(notices)
 
   return (
     <div className="w-full h-fit shadow-lg shadow-[#07040334] rounded-lg p-4 ">
@@ -40,7 +40,7 @@ const RecentNotice = () => {
       {notices ? (
         notices.map((item, i) => (
           <div key={i} className="mt-5">
-            <div className="flex items-start gap-5 py-2">
+            <div className="flex items-center gap-5 py-2">
               <Image
                 alt="notice"
                 width={25}
@@ -49,7 +49,7 @@ const RecentNotice = () => {
                 className="object-contain "
                 unoptimized
               />
-              <Link href={`/notice/${item._id}`}>
+              <Link href={`/notice/${item._id}`} className="flex">
                 <span className="font-semibold hover:text-primary-400 text-[1.2rem] hover:text-background-color font-[Montserrat]">
                   {item.title}
                 </span>
@@ -62,14 +62,14 @@ const RecentNotice = () => {
           {Array.from({ length: 6 }, (_, i) => (
             <div key={i} className="w-[90%] flex flex-col gap-5  ">
               {/* <Skeleton className="h-[2rem]" /> */}
-              <Skeleton className="h-[2rem]" width={'100%'} />
+              <Skeleton className="h-[2rem]" width={"100%"} />
               {/* <Skeleton className="h-[1.5rem]" width={'80%'} /> */}
             </div>
           ))}
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default RecentNotice;
+export default RecentNotice

@@ -1,12 +1,14 @@
-import CoreValues from '@/components/Home/CoreValues';
-import FAQ from '@/components/Home/FAQ';
-import Hero from '@/components/Home/Hero';
-import Messages from '@/components/Home/Messages';
-import Testimonials from '@/components/Home/Testimonials';
-import Welcome from '@/components/Home/Welcome';
-import { Inter } from 'next/font/google';
+import CoreValues from "@/components/Home/CoreValues"
+import Events from "@/components/Home/Events"
+import FAQ from "@/components/Home/FAQ"
+import Hero from "@/components/Home/Hero"
+import Messages from "@/components/Home/Messages"
+import Notices from "@/components/Home/Notices"
+import Testimonials from "@/components/Home/Testimonials"
+import Welcome from "@/components/Home/Welcome"
+import { Inter } from "next/font/google"
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] })
 
 export default function Home() {
   return (
@@ -24,6 +26,13 @@ export default function Home() {
       {/* <div className="w-[90%] ">
         <CoreValues />
       </div> */}
+
+      <div className="w-[90%] ">
+        <Events />
+      </div>
+      {/* <div className="w-[90%] ">
+        <Notices />
+      </div> */}
       <div className="w-[90%]">
         <Testimonials />
       </div>
@@ -31,5 +40,5 @@ export default function Home() {
         <FAQ />
       </div>
     </div>
-  );
+  )
 }

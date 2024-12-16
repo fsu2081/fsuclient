@@ -1,12 +1,12 @@
-import { Close } from "@mui/icons-material";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React from "react";
+import { Close } from "@mui/icons-material"
+import Image from "next/image"
+import Link from "next/link"
+import { useRouter } from "next/router"
+import React from "react"
 
 const AdminNav = ({ isSidebarOpen, setIsSidebarOpen }) => {
-  const router = useRouter();
-  const path = router.pathname;
+  const router = useRouter()
+  const path = router.pathname
 
   return (
     <div className="drawer lg:drawer-open z-[100] sticky top-0 ">
@@ -15,13 +15,13 @@ const AdminNav = ({ isSidebarOpen, setIsSidebarOpen }) => {
         type="checkbox"
         checked={isSidebarOpen}
         className="drawer-toggle"
+        readOnly
       />
       <div className="drawer-side rounded-r-3xl shadow-lg bg-white ">
         <label
           htmlFor="my-drawer"
           aria-label="close sidebar"
-          className="drawer-overlay"
-        ></label>
+          className="drawer-overlay"></label>
         <div className="w-fit h-full flex flex-col ">
           <header className=" w-full h-fit  flex flex-col justify-center items-center ">
             <div className="flex lg:hidden h-16 w-full items-center justify-start">
@@ -48,8 +48,7 @@ const AdminNav = ({ isSidebarOpen, setIsSidebarOpen }) => {
                   ? "bg-blue-400 text-white"
                   : "hover:bg-neutral-200"
               } `}
-              href="/admin"
-            >
+              href="/admin">
               Dashboard
             </Link>
             <Link
@@ -58,8 +57,7 @@ const AdminNav = ({ isSidebarOpen, setIsSidebarOpen }) => {
                   ? "bg-blue-400 text-white"
                   : "hover:bg-neutral-200"
               } `}
-              href="/admin/notice"
-            >
+              href="/admin/notice">
               Notice
             </Link>
             <Link
@@ -68,8 +66,7 @@ const AdminNav = ({ isSidebarOpen, setIsSidebarOpen }) => {
                   ? "bg-blue-400 text-white"
                   : "hover:bg-neutral-200"
               } `}
-              href="/admin/event"
-            >
+              href="/admin/event">
               Event
             </Link>
             <Link
@@ -78,8 +75,7 @@ const AdminNav = ({ isSidebarOpen, setIsSidebarOpen }) => {
                   ? "bg-blue-400 text-white"
                   : "hover:bg-neutral-200"
               } `}
-              href="/admin/project"
-            >
+              href="/admin/project">
               Project
             </Link>
             <Link
@@ -88,15 +84,14 @@ const AdminNav = ({ isSidebarOpen, setIsSidebarOpen }) => {
                   ? "bg-blue-400 text-white"
                   : "hover:bg-neutral-200"
               } `}
-              href="/admin/gallery"
-            >
+              href="/admin/gallery">
               Gallery
             </Link>
           </ul>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AdminNav;
+export default AdminNav

@@ -3,8 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     dangerouslyAllowSVG: true,
-    domains: ["localhost", "placehold.co"],
+    domains: ["localhost", "placehold.co", "img.daisyui.com"],
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
